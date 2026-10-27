@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家計簿</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>家計簿</h1>
+  </header>
+
+  <main>
+    <div class="ledger-layout">
+      <section class="panel entry-panel" aria-labelledby="entry-heading">
+        <h2 id="entry-heading">家計簿に登録</h2>
+        <form id="entry-form">
+          <p>
+            <label for="entry-date">日付</label>
+            <input id="entry-date" name="date" type="date" required>
+          </p>
+          <p>
+            <label for="entry-item">品目</label>
+            <input id="entry-item" name="item" type="text" placeholder="例：食費、給料" required>
+          </p>
+          <p>
+            <label for="entry-type">収支</label>
+            <select id="entry-type" name="type" required>
+              <option value="expense">支出</option>
+              <option value="income">収入</option>
+            </select>
+          </p>
+          <p>
+            <label for="entry-amount">金額（円）</label>
+            <input id="entry-amount" name="amount" type="number" min="1" step="1" placeholder="例：1200" required>
+          </p>
+          <button type="submit">追加</button>
+        </form>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <div class="display-column">
+        <section class="panel total-panel" aria-labelledby="total-heading">
+          <h2 id="total-heading">合計金額</h2>
+          <p>現在の合計：<output id="total-amount">0円</output></p>
+        </section>
+
+        <section class="panel records-panel" aria-labelledby="records-heading">
+          <h2 id="records-heading">家計簿の記録</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">日付</th>
+                <th scope="col">品目</th>
+                <th scope="col">収支</th>
+                <th scope="col">金額</th>
+              </tr>
+            </thead>
+            <tbody id="records-list">
+              <tr>
+                <td colspan="4">登録データはありません</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
